@@ -12,6 +12,8 @@ function App() {
 
   const [searchValue, setSearchValue] = useState('')
 
+  //TODO: add a debouncer to the search input to prevent unnecessary requests to the API
+
   const {data, isLoading, isError } = useGetPokemonByNameQuery(searchValue || 'bulbasaur')
 
   return (
