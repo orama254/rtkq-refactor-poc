@@ -1,4 +1,4 @@
-import { useGetPokemonByNameQuery } from './hooks/usePokemon'
+import { useGetPokemonByNameQuery } from './services/api';
 
 import './App.css'
 
