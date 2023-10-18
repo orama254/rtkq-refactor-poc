@@ -3,6 +3,8 @@ import { useState } from 'react';
 
 import { useGetPokemonByNameQuery } from './services/api';
 
+import useSearchDebounce from './hooks/useSearchDebounce';
+
 
 import SearchInput from './components/SearchInput';
 
@@ -12,9 +14,9 @@ function App() {
 
   const [searchValue, setSearchValue] = useState('')
 
-  //TODO: add a debouncer to the search input to prevent unnecessary requests to the API
+  const debounceSearchValue = useSearchDebounce({value: searchValue, delay: 500});
 
-  const {data, isLoading, isError } = useGetPokemonByNameQuery(searchValue || 'bulbasaur')
+  const {data, isLoading, isError } = useGetPokemonByNameQuery(debounceSearchValue || 'bulbasaur')
 
   return (
     <div className="App">
